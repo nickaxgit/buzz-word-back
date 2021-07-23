@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "\"# Buzz-word-back-end\"",
   "main": "app.js",
+  "browserslist": "> .5% or last 2 versions",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --exec babel-node app.js",
-    "git": "cross-env git checkout development && git add . && git commit -m",
-    "git:merge": "cross-env git checkout main && git merge development && git push && git checkout development"
+    "start": "node build/app.js",
+    "clean": "rm build -rf /s /q && mkdir build",
+    "compile": "babel src -d build",
+    "build": "npm run clean && npm run compile"
   },
   "repository": {
     "type": "git",
@@ -20,21 +21,20 @@
   },
   "homepage": "https://github.com/madalinacristea/Buzz-word-back-end#readme",
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "connect-mongo": "^4.4.1",
-    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-session": "^1.17.2",
     "mongoose": "^5.12.14",
     "node-fetch": "^2.6.1",
-    "nodemon": "^2.0.7",
     "passport": "^0.4.1",
-    "passport-local-mongoose": "^6.1.0",
-    "timesync": "^1.0.8"
+    "passport-local-mongoose": "^6.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.6",
+    "@babel/cli": "^7.14.8",
+    "@babel/core": "^7.14.8",
     "@babel/node": "^7.14.7",
-    "@babel/preset-env": "^7.14.7",
-    "cross-env": "^7.0.3"
+    "@babel/preset-env": "^7.14.8",
+    "babel-polyfill": "^6.26.0"
   }
 }

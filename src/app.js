@@ -25,6 +25,7 @@ const app = express(); //create instance of server
 //express-session is a middleware for express handling session setting and reading
 const exp_sessions = session({
   secret: config.mongo.secret,
+  cookie: { httpOnly: false, sameSite: "none", secure: true },
   name: "buzz-words-session",
   resave: false,
   saveUninitialized: false,
@@ -32,6 +33,7 @@ const exp_sessions = session({
 });
 
 //SESSIONS
+app.enable('trust proxy');
 app.use(exp_sessions);
 //PASSPORT
 app.use(passport.initialize());
@@ -83,13 +85,5 @@ let srv;
 connect();
 
 //initialise Game
-Game.loadDB()
-Game.initRooms()
-
-
-
-
-
-
-
-
+Game.loadDB();
+Game.initRooms();

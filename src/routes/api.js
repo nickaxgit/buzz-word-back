@@ -1,3 +1,4 @@
+import "babel-polyfill";
 import { Router } from "express";
 import { Game } from "../game/game";
 import { config } from "../config/config";

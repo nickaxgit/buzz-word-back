@@ -1,16 +1,8 @@
-import { config as dotenv } from "dotenv";
-import path from "path";
-dotenv({ path: path.resolve(__dirname, "../.env") });
-
 const DEBUG = true;
-const FRONT_END_FOLDER = process.env.FRONT_END_FOLDER || "BuzzWords-Front-End";
-const FRONT_END_STATIC = process.env.FRONT_END_STATIC || "assets";
-const GRID_SIZE = process.env.GRID_SIZE || 127;
+const GRID_SIZE = process.env.GRID_SIZE;
 
-const FRONT_END = { static: FRONT_END_STATIC, root: FRONT_END_FOLDER };
-
-const SERVER_PORT = 3000;
-const SERVER_HOSTNAME = "http://localhost";
+const SERVER_PORT = process.env.PORT;
+const SERVER_HOSTNAME = process.env.HOSTNAME;
 const SERVER_API_BASE = "/api";
 const MONGO_OPTIONS = {
   useNewUrlParser: true,
@@ -20,10 +12,10 @@ const MONGO_OPTIONS = {
   useCreateIndex: true,
 };
 
-const MONGO_USERNAME = "";
-const MONGO_PASSWORD = "";
-const MONGO_HOST = "localhost";
-const MONGO_DB = "buzz-words";
+const MONGO_USERNAME = process.env.MONGO_USERNAME;
+const MONGO_PASSWORD = process.env.MONGO_PASSWORD;
+const MONGO_HOST = process.env.MONGO_HOST;
+const MONGO_DB = process.env.MONGO_DB;
 const MONGO_SECRET = "J<ctr5J%S8,5jf+%RSFgwBfK=j=PvonCcV~KxoQO9x/Xkrxg=6z2MowEl3ml:W4";
 
 const MONGO = {
@@ -33,7 +25,8 @@ const MONGO = {
   options: MONGO_OPTIONS,
   db: MONGO_DB,
   secret: MONGO_SECRET,
-  url: `mongodb://${MONGO_HOST}/${MONGO_DB}`,
+  // url: `mongodb://${MONGO_HOST}/${MONGO_DB}`,
+  url: `mongodb+srv://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOST}/${MONGO_DB}`,
 };
 
 const SERVER = {
@@ -55,6 +48,5 @@ export const config = {
   server: SERVER,
   mongo: MONGO,
   http: HTTP_RES_CODES,
-  front: FRONT_END,
   gridSize: GRID_SIZE,
 };

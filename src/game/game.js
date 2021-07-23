@@ -163,6 +163,7 @@ export const Game = {
   finishGame(roomId) {
     const room = this.getRoom(roomId);
     room.roomState = 2;
+    room.finishedAt = new Date();
 
     if (debug) logger.info(NAMESPACE, `Finishing game in room ${roomId} ${room.roomName}`);
 
@@ -224,7 +225,7 @@ export const Game = {
   async addPlayer(roomId, player) {
     const response = await this.state.addPlayer(roomId, player);
     this.processState();
-    return response
+    return response;
   },
 
   async getUserByID(id) {
