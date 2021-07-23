@@ -26,10 +26,14 @@ export const Game = {
   // METHODS
   initRooms() {
     if (debug) logger.info(NAMESPACE, "Initialising rooms");
-    this.state.createRoom("GOLDEN", 15, 6, 30, config.gridSize).addRound(0, 30);
-    this.state.createRoom("SILVER", 17, 6, 45, config.gridSize).addRound(1, 30);
-    this.state.createRoom("BRONZE", 4, 10, 60, config.gridSize).addRound(2, 30);
-    this.state.createRoom("SINGLE", 1, 3, 30, config.gridSize).addRound(3, 30);
+
+    //name. maxPlayers, rounds, Secs
+    this.state.createRoom("GOLDEN", 15, 6, 40, config.gridSize).addRound(0, 40);
+    this.state.createRoom("SILVER", 17, 6, 40, config.gridSize).addRound(1, 40);
+    this.state.createRoom("BRONZE", 4, 10, 40, config.gridSize).addRound(2, 40);
+    this.state.createRoom("RED", 2, 3, 40, config.gridSize).addRound(3, 40);
+    
+    this.state.createRoom("SINGLE", 1, 3, 40, config.gridSize).addRound(4, 40);
   },
 
   processState() {
