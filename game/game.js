@@ -26,8 +26,8 @@ export const Game = {
   // METHODS
   initRooms() {
     if (debug) logger.info(NAMESPACE, "Initialising rooms");
-    this.state.createRoom("GOLDEN", 4, 10, 30, config.gridSize).addRound(0, 30);
-    this.state.createRoom("SILVER", 4, 10, 45, config.gridSize).addRound(1, 30);
+    this.state.createRoom("GOLDEN", 15, 6, 30, config.gridSize).addRound(0, 30);
+    this.state.createRoom("SILVER", 17, 6, 45, config.gridSize).addRound(1, 30);
     this.state.createRoom("BRONZE", 4, 10, 60, config.gridSize).addRound(2, 30);
     this.state.createRoom("SINGLE", 1, 3, 30, config.gridSize).addRound(3, 30);
   },
